@@ -1,5 +1,9 @@
 #include <Joystick.h>
 #include <SBUS.h>
+#include <SoftwareSerial.h>
+
+const byte rxPin = 2;
+const byte txPin = 3;
 
 #define SBUS_MIN 180
 #define SBUS_MAX 1800
@@ -29,7 +33,7 @@ void loop() {
 
   sbus.process();
 
-  int channels[16];
+  int channels[17];
 
   for (int i=1; i<=16; i++) {
     //Serial.print("CH" + String(i) + ": " + sbus.getChannel(i));
@@ -53,4 +57,3 @@ void loop() {
   }
   Joystick.sendState();
 }
-
